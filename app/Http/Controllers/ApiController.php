@@ -8,96 +8,32 @@ use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
 {
+
+    /**
+     * Returns the collection of the end-point
+     *
+     * @param   string  $model  Model we are requesting
+     * @return  response
+     */
     public function collection($model)
     {
-        $model = config('api.resources.' . $model);
+        $model    = config('api.resources.' . $model);
         $response = $model::all();
-
-
         return response($response);
     }
 
+    /**
+     * Returns a single resources based on the primary key
+     *
+     * @param   string   $model  Model we are requesting
+     * @param   integer  $id     ID of the resource we want
+     * @return  response
+     */
     public function single($model, $id)
     {
-        $model = config('api.resources.' . $model);
-        $response = $model::all();
-
+        $model    = config('api.resources.' . $model);
+        $response = $model::findOrFail($id);
         return response($response);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
