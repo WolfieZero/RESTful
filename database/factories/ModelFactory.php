@@ -27,6 +27,6 @@ $factory->define(App\Datum::class, function (Faker\Generator $faker) {
         'more'      => $faker->paragraph(mt_rand(1, 5)),
         'amount'    => $faker->randomFloat(),
         'confirmed' => $faker->boolean(75),
-        'user_id'   => $faker->numberBetween(1, 5),
+        'user_id'   => factory(App\User::class)->create()->id,
     ];
 });
